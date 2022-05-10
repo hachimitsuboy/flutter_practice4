@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_pracitce/models/counter_model.dart';
 
 // normal Provider
-final helloWorldProvider = Provider((_) => 'Hello world');
+final helloWorldProvider = Provider((_) => "カウンター");
 
 //ChangeNotifierProvider
 final counterProvider = ChangeNotifierProvider(
@@ -33,6 +33,8 @@ class MyApp extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(value),
+              const SizedBox(height: 10),
               Text("ボタンがタップされた回数: $count"),
               const SizedBox(height: 20),
               ElevatedButton(onPressed: () => refresh(ref), child: const Text("リセットする"),)
