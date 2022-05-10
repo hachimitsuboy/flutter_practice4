@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_pracitce/screens/home_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+final helloWorldProvider = Provider((_) => 'Hello world');
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ProviderScope(child: MyApp(),),
+  );
+
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class MyApp extends HookConsumerWidget{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    // TODO: implement build
+    final String value = ref.watch(helloWorldProvider);
+
     return MaterialApp(
-      title: "RiverPod",
-      theme: ThemeData.dark(),
-      initialRoute: '/',
-      routes: {
-        '/' : (context) => const HomeScreen(),
-      },
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Example"),),
+        body: Center(
+          child: Text(value),
+        ),
+      ),
     );
   }
 }
