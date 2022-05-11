@@ -8,3 +8,5 @@ ChangeNotifierProviderは値をnotifier（）による通知を受け、更新�
 (実際にChangeNotifierProviderをProviderに書き換えたところ、値が更新されることはなかった。)
 Providerを使うのと変数を使うのでは何が違うのか？
 
+ref.watchとref.readの違いがわからない
+
