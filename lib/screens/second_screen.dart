@@ -36,9 +36,12 @@ class SecondScreen extends ConsumerWidget {
           DropdownButton<ProductSortType>(
             // ソートの種類が変わると、ドロップダウンメニューが更新されて
             // 表示されるアイコン（メニューアイテム）が変わります。
+            //プロバイダがラップしている値を返して、その値が変更されたときにウィジェットを再構築する。
             value: ref.watch(productSortTypeProvider),
             //stateProvider.notifierが呼ばれると、おそらくConsumerWidgetに通知がいき、リビルドされるのではないか？
             //つまり、ProductSortTypeのstate(name,price)が変更され、setstateしろといわれている？
+
+            //watchとreadの違いがわからん
             onChanged: (value) =>
                 ref.read(productSortTypeProvider.notifier).state = value!,
 
