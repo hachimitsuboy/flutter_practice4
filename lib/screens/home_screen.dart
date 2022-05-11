@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_pracitce/screens/second_screen.dart';
+import 'package:riverpod_pracitce/screens/youtube_screen.dart';
 import '../main.dart';
 import '../models/product_model.dart';
 
@@ -35,7 +36,7 @@ class HomeScreen extends ConsumerWidget{
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SecondScreen(),
+                    builder: (context) => YoutubeScreen(),
                   ),
                 );
               },

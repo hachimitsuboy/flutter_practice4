@@ -1,7 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../screens/second_screen.dart';
-
 class Product {
   Product({required this.name, required this.price});
 
