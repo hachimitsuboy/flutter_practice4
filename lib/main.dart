@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_pracitce/models/counter_model.dart';
+import 'package:riverpod_pracitce/screens/home_screen.dart';
 
 // normal Provider
 final helloWorldProvider = Provider((_) => "カウンター");
@@ -18,46 +19,16 @@ void main() {
   );
 }
 
-class MyApp extends ConsumerWidget {
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final String value = ref.watch(helloWorldProvider);
-    final int count = ref.watch(counterProvider).count;
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Example"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(value),
-              const SizedBox(height: 10),
-              Text("ボタンがタップされた回数: $count"),
-              const SizedBox(height: 20),
-              ElevatedButton(onPressed: () => refresh(ref), child: const Text("リセットする"),)
-            ],
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => increment(ref),
-          child: const Icon(Icons.add),
-          tooltip: "値を追加",
-        ),
-      ),
+      title: "RiverPod_Practice",
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
-
-  increment(WidgetRef ref) {
-    final model = ref.read(counterProvider);
-    //FloatingActionButtonが押された時、refを用いてプロバイダがラップしているcounterModelを生成し、incrementを実行する
-    model.increment();
-  }
-
-  refresh(WidgetRef ref) {
-    final model = ref.read(counterProvider);
-    model.refresh();
-  }
 }
+
